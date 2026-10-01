@@ -2,7 +2,7 @@
 
 # SellTech AI Database
 
-**Hardware database for SellTech AI.**
+**Structured, validated and versioned hardware data for SellTech AI.**
 
 </div>
 
@@ -10,33 +10,59 @@
 
 ## Overview
 
-This repository contains the structured and versioned hardware database used by the **SellTech AI** Android application.
+This repository contains the hardware database used by the **SellTech AI** Android application.
 
-The database supports:
+It provides structured data for:
 
 - component recommendations
-- compatibility checks
-- performance analysis
+- compatibility analysis
+- performance evaluation
 - filtering and scoring
-- Supabase synchronization
-- Room synchronization
-- future database updates
+- offline database access
+- independent database updates
+
+Database releases are maintained separately from the Android application, allowing hardware data to evolve without requiring an app release.
 
 ---
 
-## Structure
+## Architecture
 
 ```text
-SellTechAI-Database/
+Excel Master
+     ↓
+Validation & Audit
+     ↓
+JSON Database
+     ↓
+GitHub
+     ↓
+SellTech AI
+     ↓
+Local Cache / Offline Fallback
+```
+
+The application checks the repository manifest for newer database versions.
+
+A downloaded database is validated before activation. If an update fails validation, the existing local database remains active.
+
+---
+
+## Repository Structure
+
+```text
+SellTech-AI-Database/
 │
 ├── README.md
-├── VERSION.json
 │
 ├── database/
+│   ├── manifest.json
+│   │
 │   ├── graphics_cards/
-│   │   ├── graphics_cards.json
-│   │   └── version.json
+│   │   └── graphics_cards.json
+│   │
 │   ├── processors/
+│   │   └── processors.json
+│   │
 │   ├── motherboards/
 │   ├── memory/
 │   ├── storage/
@@ -54,49 +80,49 @@ SellTechAI-Database/
 
 ---
 
-## Data Workflow
+## Database Workflow
 
-Each component category follows the same process:
+Every hardware category follows the same controlled workflow:
 
 1. Define category scope
-2. Build the product list
+2. Build and verify the product list
 3. Remove duplicates and invalid entries
-4. Define database schema
+4. Define the database schema
 5. Separate base products and variants
 6. Define source priority
-7. Collect data field by field
-8. Verify completed fields
-9. Normalize units and values
-10. Add compatibility and performance data
-11. Store source and verification metadata
-12. Run automatic validation
-13. Review anomalies manually
-14. Calculate derived data
-15. Complete final category audit
-16. Version and release the database
+7. Collect and verify data field by field
+8. Normalize units and values
+9. Add compatibility and performance data
+10. Preserve source and verification metadata
+11. Run automatic validation
+12. Manually review anomalies
+13. Calculate derived data
+14. Complete the final category audit
+15. Version and release the database
 
 ---
 
-## Data Quality
+## Data Integrity
 
-The database is built around:
+SellTech AI databases are designed around:
 
-- reliable sources
-- normalized values
-- minimal unnecessary missing data
+- authoritative source priority
+- normalized values and units
+- deterministic data processing
 - traceable verification
 - automatic validation
-- manual review
+- manual anomaly review
+- explicit handling of unavailable data
 
-Fields with unavailable or non-applicable data may be omitted instead of storing unnecessary `null` values.
+Unknown values are never treated as confirmed compatibility.
+
+Fields without a verified value may be omitted rather than populated with artificial data or unnecessary `null` values.
 
 ---
 
-## Versioning
+## Versioning & Updates
 
-Each category has its own version metadata.
-
-Example:
+Database categories are independently versioned while a central manifest controls available releases.
 
 ```json
 {
@@ -105,32 +131,55 @@ Example:
 }
 ```
 
+Before activation, downloaded databases are checked for:
+
+- version consistency
+- schema consistency
+- category integrity
+- product count integrity
+- structural validity
+- SHA-256 integrity
+
+Invalid updates are rejected without replacing the active database.
+
 ---
 
 ## Current Status
 
 ### Graphics Cards
 
-The Graphics Cards category is the first completed database category.
-
-Main files:
+**Status: Completed — v1.0**
 
 ```text
 database/graphics_cards/graphics_cards.json
-database/graphics_cards/version.json
 ```
 
-Additional component categories will be added using the same structure and validation workflow.
+**617 validated products**
+
+Additional hardware categories are being built using the same database architecture and validation workflow.
 
 ---
 
-## Integration
+## Android Integration
 
-The database is designed for integration with:
+The database is consumed by **SellTech AI**, built with Kotlin and Jetpack Compose.
 
-- Kotlin
-- Jetpack Compose
-- Room
-- Supabase
+Runtime database priority:
 
-The database repository is kept separate from the Android application repository so hardware data can be updated and versioned independently.
+```text
+Validated Local Update
+        ↓
+Bundled Asset Fallback
+```
+
+This allows SellTech AI to receive database updates independently while remaining fully functional offline.
+
+---
+
+<div align="center">
+
+**SellTech AI Database**
+
+*Reliable hardware data. Deterministic recommendations.*
+
+</div>
