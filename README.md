@@ -1,6 +1,6 @@
 <div align="center">
 
-# SellTechAI-Database
+# SellTech AI Database
 
 **Hardware database for SellTech AI.**
 
