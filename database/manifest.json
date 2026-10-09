@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "database-manifest-v1",
+  "generatedAt": "2026-10-09",
+  "databases": {
+    "graphics_cards": {
+      "category": "graphics_cards",
+      "databaseVersion": "v1.0",
+      "schemaVersion": "github-json-v1",
+      "fileUrl": "https://raw.githubusercontent.com/SellTechAI/SellTech-AI-Database/main/database/graphics_cards/graphics_cards.json",
+      "sha256": "cd1e162e10a3f7fb0f128861022b1bac5bc932b18abcf2548e22f045f4706d4e",
+      "acceptedProducts": 617,
+      "generatedAt": "2026-10-01"
+    },
+    "processors": {
+      "category": "processors",
+      "databaseVersion": "v1.0",
+      "schemaVersion": "processors-json-v1",
+      "fileUrl": "https://raw.githubusercontent.com/SellTechAI/SellTech-AI-Database/main/database/processors/processors.json",
+      "sha256": "e1ac0338de20cc06433fbe1525b0b4943a70ee302b98411e5add7563536bbf1e",
+      "acceptedProducts": 899,
+      "generatedAt": "2026-10-08T12:43:13.861696+00:00"
+    }
+  }
+}
