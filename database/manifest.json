@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "database-manifest-v1",
+  "generatedAt": "2026-10-10",
+  "databases": {
+    "graphics_cards": {
+      "category": "graphics_cards",
+      "databaseVersion": "v1.0",
+      "schemaVersion": "github-json-v1",
+      "fileUrl": "https://raw.githubusercontent.com/SellTechAI/SellTech-AI-Database/main/database/graphics_cards/graphics_cards.json",
+      "sha256": "8c8d24330ac3b886ed38fe60132dde0fd680159945c17a73944a6607d11f2df7",
+      "acceptedProducts": 617,
+      "generatedAt": "2026-10-01"
+    },
+    "processors": {
+      "category": "processors",
+      "databaseVersion": "v1.0",
+      "schemaVersion": "processors-json-v1",
+      "fileUrl": "https://raw.githubusercontent.com/SellTechAI/SellTech-AI-Database/main/database/processors/processors.json",
+      "sha256": "45255662b354de8343fb40e746c737a44ca58a8276f9651dccea07851fff26c3",
+      "acceptedProducts": 899,
+      "generatedAt": "2026-10-08T12:43:13.861696+00:00"
+    },
+    "smartphones": {
+      "category": "smartphones",
+      "databaseVersion": "v1.0",
+      "schemaVersion": "smartphones-array-v1",
+      "fileUrl": "https://raw.githubusercontent.com/SellTechAI/SellTech-AI-Database/main/database/smartphones/smartphones.json",
+      "sha256": "59dc25a864d785764c57cc329fff4cee28bb62a455598f98b02139ad21d04b70",
+      "acceptedProducts": 6878,
+      "generatedAt": "2026-10-10"
+    }
+  }
+}
